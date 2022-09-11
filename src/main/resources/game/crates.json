@@ -1,0 +1,40 @@
+{
+  "crates": {
+    "crateSmall": {
+      "id": "crateSmall",
+      "name": "Small crate",
+      "imgPathClosed": "img/crates/crateSmallClosed.png",
+      "imgPathOpen": "img/crates/crateSmallOpen.png",
+      "crateSize": "SMALL",
+      "crateType": "NORMAL",
+      "keyId": null
+    },
+    "crateMiddle": {
+      "id": "crateMiddle",
+      "name": "Middle crate",
+      "imgPathClosed": "img/crates/crateSmallClosed.png",
+      "imgPathOpen": "img/crates/crateSmallOpen.png",
+      "crateSize": "MIDDLE",
+      "crateType": "NORMAL",
+      "keyId": null
+    },
+    "crateBig": {
+      "id": "crateBig",
+      "name": "Big crate",
+      "imgPathClosed": "img/crates/crateSmallClosed.png",
+      "imgPathOpen": "img/crates/crateSmallOpen.png",
+      "crateSize": "BIG",
+      "crateType": "NORMAL",
+      "keyId": null
+    },
+    "crateQuest": {
+      "id": "crateQuest",
+      "name": "Quest crate",
+      "imgPathClosed": "img/crates/crateSmallClosed.png",
+      "imgPathOpen": "img/crates/crateSmallOpen.png",
+      "crateSize": "BIG",
+      "crateType": "QUEST",
+      "keyId": "crateKey"
+    }
+  }
+}

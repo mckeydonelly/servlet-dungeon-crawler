@@ -1,0 +1,84 @@
+{
+  "npcs": {
+    "warriorSmall": {
+      "id": "warriorSmall",
+      "name": "Small warrior",
+      "imgPath": "img/npcs/warriorSmall.png",
+      "health": 50,
+      "maxHealth": 50,
+      "damageTypeList": {
+        "NORMAL": 1,
+        "MAGIC": 0
+      },
+      "defenseTypeList": {
+        "NORMAL": 1,
+        "MAGIC": 0
+      },
+      "dialogId": "warriorSmall"
+    },
+    "warriorMiddle": {
+      "id": "warriorMiddle",
+      "name": "Middle warrior",
+      "imgPath": "img/npcs/warriorMiddle.png",
+      "health": 70,
+      "maxHealth": 70,
+      "damageTypeList": {
+        "NORMAL": 2,
+        "MAGIC": 0
+      },
+      "defenseTypeList": {
+        "NORMAL": 2,
+        "MAGIC": 0
+      },
+      "dialogId": "warriorMiddle"
+    },
+    "warriorBig": {
+      "id": "warriorBig",
+      "name": "Big warrior",
+      "imgPath": "img/npcs/warriorBig.png",
+      "health": 90,
+      "maxHealth": 90,
+      "damageTypeList": {
+        "NORMAL": 3,
+        "MAGIC": 0
+      },
+      "defenseTypeList": {
+        "NORMAL": 3,
+        "MAGIC": 0
+      },
+      "dialogId": "warriorBig"
+    },
+    "strangeMan": {
+      "id": "strangeMan",
+      "name": "Strange man",
+      "imgPath": "img/npcs/strangeMan.png",
+      "health": 9999,
+      "maxHealth": 9999,
+      "damageTypeList": {
+        "NORMAL": 0,
+        "MAGIC": 0
+      },
+      "defenseTypeList": {
+        "NORMAL": 0,
+        "MAGIC": 0
+      },
+      "dialogId": "strangeMan"
+    },
+    "warriorNamedLans": {
+      "id": "warriorNamedLans",
+      "name": "Lans",
+      "imgPath": "img/npcs/warriorNamedLans.png",
+      "health": 110,
+      "maxHealth": 110,
+      "damageTypeList": {
+        "NORMAL": 4,
+        "MAGIC": 0
+      },
+      "defenseTypeList": {
+        "NORMAL": 4,
+        "MAGIC": 0
+      },
+      "dialogId": "warriorNamedLans"
+    }
+  }
+}

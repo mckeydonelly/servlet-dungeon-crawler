@@ -1,0 +1,10 @@
+{
+  "quests": {
+    "strangeManQuest": {
+      "id": "strangeManQuest",
+      "text": "Bring the Key",
+      "questType": "ITEM_BRING",
+      "targetId": "crateKey"
+    }
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "dialogues": {
+    "warriorSmall": {
+      "id": "warriorSmall",
+      "greeting": "I kill you",
+      "phrases": {
+        "1": {
+          "id": 1,
+          "label": "Go to me and fight!",
+          "answers": {
+            "1": {
+              "label": "Haha!",
+              "answerAvailability": {
+                "availableType": "ALWAYS",
+                "availableCondition": false,
+                "questId": null,
+                "itemId": null
+              },
+              "answerAction": {
+                "answerActionType": "NONE",
+                "questId": null,
+                "itemId": null
+              },
+              "successPhraseId": 1,
+              "defaultPhraseId": 1
+            }
+          }
+        }
+      }
+    },
+    "warriorMiddle": {
+      "id": "warriorMiddle",
+      "greeting": "I kill you",
+      "phrases": {
+        "1": {
+          "id": 1,
+          "label": "Go to me and fight!",
+          "answers": {
+            "1": {
+              "label": "Haha!",
+              "answerAvailability": {
+                "availableType": "ALWAYS",
+                "availableCondition": false,
+                "questId": null,
+                "itemId": null
+              },
+              "answerAction": {
+                "answerActionType": "NONE",
+                "questId": null,
+                "itemId": null
+              },
+              "successPhraseId": 1,
+              "defaultPhraseId": 1
+            }
+          }
+        }
+      }
+    },
+    "warriorBig": {
+      "id": "warriorBig",
+      "greeting": "I kill you",
+      "phrases": {
+        "1": {
+          "id": 1,
+          "label": "Go to me and fight!",
+          "answers": {
+            "1": {
+              "label": "Haha!",
+              "answerAvailability": {
+                "availableType": "ALWAYS",
+                "availableCondition": false,
+                "questId": null,
+                "itemId": null
+              },
+              "answerAction": {
+                "answerActionType": "NONE",
+                "questId": null,
+                "itemId": null
+              },
+              "successPhraseId": 1,
+              "defaultPhraseId": 1
+            }
+          }
+        }
+      }
+    },
+    "strangeMan": {
+      "id": "strangeMan",
+      "greeting": "Hi! How are you?",
+      "phrases": {
+        "1": {
+          "id": 1,
+          "label": "I have a job for you. Are you ready to take on a difficult task?",
+          "answers": {
+            "1": {
+              "label": "Yes",
+              "answerAvailability": {
+                "availableType": "QUEST",
+                "availableCondition": false,
+                "questId": "strangeManQuest",
+                "itemId": null
+              },
+              "answerAction": {
+                "answerActionType": "TAKE_QUEST",
+                "questId": "strangeManQuest",
+                "itemId": null
+              },
+              "successPhraseId": 2,
+              "defaultPhraseId": 0
+            },
+            "2": {
+              "label": "No",
+              "answerAvailability": {
+                "availableType": "QUEST",
+                "availableCondition": false,
+                "questId": "strangeManQuest",
+                "itemId": null
+              },
+              "answerAction": {
+                "answerActionType": "NONE",
+                "questId": null,
+                "itemId": null
+              },
+              "successPhraseId": 3,
+              "defaultPhraseId": 0
+            },
+            "3": {
+              "label": "Check quest result",
+              "answerAvailability": {
+                "availableType": "QUEST",
+                "availableCondition": true,
+                "questId": "strangeManQuest",
+                "itemId": null
+              },
+              "answerAction": {
+                "answerActionType": "CHECK_QUEST",
+                "questId": "strangeManQuest",
+                "itemId": null
+              },
+              "successPhraseId": 4,
+              "defaultPhraseId": 1
+            }
+          }
+        },
+        "2": {
+          "id": 2,
+          "label": "Thank you. You need to take a key on \"East planes\", next you need go to \"Wild Mountains\", kill a terrible monster Lans and open the chest. In the end, you need to come back to me and report this.",
+          "answers": {}
+        },
+        "3": {
+          "id": 3,
+          "label": "You're no less a coward.",
+          "answers": {}
+        },
+        "4": {
+          "id": 4,
+          "label": "Congratulations! You are win! End game :(",
+          "answers": {}
+        }
+      }
+    },
+    "warriorNamedLans": {
+      "id": "warriorNamedLans",
+      "greeting": "Another victim sent by a stranger? I kill you!!!",
+      "phrases": {
+        "1": {
+          "id": 1,
+          "label": "Go to me and fight!",
+          "answers": {
+            "1": {
+              "label": "Haha!",
+              "answerAvailability": {
+                "availableType": "ALWAYS",
+                "availableCondition": false,
+                "questId": null,
+                "itemId": null
+              },
+              "answerAction": {
+                "answerActionType": "NONE",
+                "questId": null,
+                "itemId": null
+              },
+              "successPhraseId": 1,
+              "defaultPhraseId": 1
+            }
+          }
+        }
+      }
+    }
+  }
+}

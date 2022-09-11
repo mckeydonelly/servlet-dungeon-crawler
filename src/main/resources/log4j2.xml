@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="ERROR" name="MyApp" packages="">
+    <Properties>
+        <Property name="path">${sys:catalina.home}/logs</Property>
+        <Property name="appName">servlet-text-rpg</Property>
+    </Properties>
+
+    <Appenders>
+        <RollingFile name="LogToFile" fileName="${path}/${appName}.log"
+                     filePattern="${path}/${appName}.%d{yyyy-MM-dd}.log"
+                     ignoreExceptions="false">
+            <PatternLayout pattern="%d %-5p %c{1}: %m%n"/>
+            <TimeBasedTriggeringPolicy/>
+            <DefaultRolloverStrategy>
+                <Delete basePath="${path}" maxDepth="2">
+                    <IfFileName glob="${appName}.*.log"/>
+                    <IfLastModified age="7d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Root level="ALL">
+            <AppenderRef ref="LogToFile"/>
+        </Root>
+    </Loggers>
+</Configuration>
