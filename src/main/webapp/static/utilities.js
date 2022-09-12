@@ -32,7 +32,19 @@ function getInventory() {
 }
 
 function getQuests() {
+    $("#quests-table > tbody").html("");
 
+    $.get('/quests', function (response) {
+        $.each(response, function (index, quest) {
+            let row = $('<tr>').html("<td>"
+                + quest.issuedBy + "</td><td>"
+                + quest.status + "</td><td>"
+                + quest.questType + "</td><td>"
+                + quest.targetName + "</td><td>"
+                + quest.info + "</td>"
+            ).appendTo("#quests-table");
+        });
+    });
 }
 
 function objectAction(type, id, objectId, cardId) {

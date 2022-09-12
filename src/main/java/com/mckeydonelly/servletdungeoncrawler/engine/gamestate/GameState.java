@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-//TODO Double check logic
 @Data
 public class GameState {
     private final List<String> gameLog;

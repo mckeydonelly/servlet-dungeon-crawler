@@ -1,7 +1,7 @@
 package com.mckeydonelly.servletdungeoncrawler.servlet;
 
 import com.mckeydonelly.servletdungeoncrawler.engine.map.GameMap;
-import com.mckeydonelly.servletdungeoncrawler.user.SessionManager;
+import com.mckeydonelly.servletdungeoncrawler.session.SessionManager;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;

@@ -16,7 +16,13 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <table id="statistic-table" class="table table-sm">
+                <table id="statistic-table" class="table table-sm table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Parameter</th>
+                        <th scope="col">Value</th>
+                    </tr>
+                    </thead>
                     <tbody>
                     </tbody>
                 </table>

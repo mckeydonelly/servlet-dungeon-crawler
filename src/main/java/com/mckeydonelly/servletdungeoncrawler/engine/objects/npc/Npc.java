@@ -1,7 +1,5 @@
 package com.mckeydonelly.servletdungeoncrawler.engine.objects.npc;
 
-import com.mckeydonelly.servletdungeoncrawler.engine.action.Attack;
-import com.mckeydonelly.servletdungeoncrawler.engine.action.Speak;
 import com.mckeydonelly.servletdungeoncrawler.engine.objects.item.DamageType;
 import com.mckeydonelly.servletdungeoncrawler.engine.objects.item.DefenseType;
 import lombok.Data;
@@ -9,7 +7,7 @@ import lombok.Data;
 import java.util.Map;
 
 @Data
-public class Npc implements Attack, Speak {
+public class Npc {
     private String id;
     private String name;
     private String imgPath;
@@ -18,14 +16,4 @@ public class Npc implements Attack, Speak {
     private Map<DamageType, Integer> damageTypeList;
     private Map<DefenseType, Integer> defenseTypeList;
     private String dialogId;
-
-    @Override
-    public int attack() {
-        return 0;
-    }
-
-    @Override
-    public String speak() {
-        return null;
-    }
 }

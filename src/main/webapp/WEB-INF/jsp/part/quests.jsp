@@ -18,18 +18,14 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <table id="inventory-table" class="table table-sm">
+        <table id="quests-table" class="table table-sm">
           <thead class="thead-secondary">
           <tr>
-            <th scope="col">Icon</th>
-            <th scope="col">Name</th>
+            <th scope="col">Issued by</th>
+            <th scope="col">Status</th>
             <th scope="col">Type</th>
-            <th scope="col">Weight</th>
-            <th scope="col">Damage</th>
-            <th scope="col">M.Damage</th>
-            <th scope="col">Defense</th>
-            <th scope="col">M.Defense</th>
-            <th scope="col">Heal</th>
+            <th scope="col">Target name</th>
+            <th scope="col">info</th>
           </tr>
           </thead>
           <tbody>

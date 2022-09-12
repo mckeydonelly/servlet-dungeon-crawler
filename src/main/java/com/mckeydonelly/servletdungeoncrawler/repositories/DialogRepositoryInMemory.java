@@ -1,7 +1,6 @@
 package com.mckeydonelly.servletdungeoncrawler.repositories;
 
 import com.mckeydonelly.servletdungeoncrawler.engine.objects.npc.dialog.Dialog;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.List;

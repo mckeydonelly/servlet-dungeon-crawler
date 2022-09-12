@@ -1,12 +1,11 @@
 package com.mckeydonelly.servletdungeoncrawler.engine.objects.item;
 
-import com.mckeydonelly.servletdungeoncrawler.engine.action.Use;
 import lombok.Data;
 
 import java.util.Map;
 
 @Data
-public class Item implements Use {
+public class Item {
     private String id;
     private String name;
     private String imgPath;
@@ -15,9 +14,4 @@ public class Item implements Use {
     private Map<DamageType, Integer> damageTypeList;
     private Map<DefenseType, Integer> defenseTypeList;
     private int healAmount;
-
-    @Override
-    public int use() {
-        return 0;
-    }
 }

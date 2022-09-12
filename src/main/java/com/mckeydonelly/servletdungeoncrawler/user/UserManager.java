@@ -2,18 +2,13 @@ package com.mckeydonelly.servletdungeoncrawler.user;
 
 import com.google.common.hash.Hashing;
 import com.mckeydonelly.servletdungeoncrawler.repositories.UserRepository;
-import jakarta.servlet.http.Cookie;
+import com.mckeydonelly.servletdungeoncrawler.session.SessionManager;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class UserManager {
-    //TODO starting health to config? or may be to start page with name?
-    //TODO move to config?
     private static final String USERID = "userid";
     private static final String REQUEST_USER_NAME = "user_name";
     private static final int START_HEALTH = 150;

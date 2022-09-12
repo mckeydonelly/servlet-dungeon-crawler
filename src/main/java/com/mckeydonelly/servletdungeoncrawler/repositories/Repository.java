@@ -1,10 +1,10 @@
 package com.mckeydonelly.servletdungeoncrawler.repositories;
 
-public interface Repository<T, ID> {
+public interface Repository<T,I> {
     void save(T entity);
-    T findById(ID id);
+    T findById(I id);
     Iterable<T> findAll();
     int count();
     void delete(T entity);
-    boolean exists(ID id);
+    boolean exists(I id);
 }

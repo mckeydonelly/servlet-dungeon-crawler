@@ -1,7 +1,7 @@
 package com.mckeydonelly.servletdungeoncrawler.servlet;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mckeydonelly.servletdungeoncrawler.user.SessionManager;
+import com.mckeydonelly.servletdungeoncrawler.session.SessionManager;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;

@@ -3,6 +3,7 @@ package com.mckeydonelly.servletdungeoncrawler.engine.map.location;
 import com.mckeydonelly.servletdungeoncrawler.engine.map.location.path.Path;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Map;
 
 @Data

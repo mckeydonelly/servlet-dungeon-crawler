@@ -104,7 +104,7 @@
             </div>
             <div class="row">
                 <div class="col border-end">
-                    <img style="width:200px; height= 200px;" src="https://cache.desktopnexus.com/thumbseg/2538/2538564-bigthumbnail.jpg">
+                    <img style="width:200px; height:200px;" src="https://cache.desktopnexus.com/thumbseg/2538/2538564-bigthumbnail.jpg" alt="Npc image">
                 </div>
                 <div class="col">
                     <p class="mb-0">Strength: {count}</p>

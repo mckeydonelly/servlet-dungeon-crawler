@@ -29,5 +29,5 @@ public class User {
     @Builder.Default
     private GameState gameState = new GameState();
     @Builder.Default
-    private Map<Integer, String> enemyKilled = new HashMap<>();
+    private Map<String, Integer> enemyKilled = new HashMap<>();
 }

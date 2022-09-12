@@ -2,9 +2,10 @@
   "quests": {
     "strangeManQuest": {
       "id": "strangeManQuest",
-      "text": "Bring the Key",
+      "issuesById": "strangeMan",
       "questType": "ITEM_BRING",
-      "targetId": "crateKey"
+      "targetId": "crateKey",
+      "info": "Bring the Key"
     }
   }
 }

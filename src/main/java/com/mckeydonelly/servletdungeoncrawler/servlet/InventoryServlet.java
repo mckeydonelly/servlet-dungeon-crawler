@@ -5,7 +5,7 @@ import com.mckeydonelly.servletdungeoncrawler.engine.dto.ItemInfo;
 import com.mckeydonelly.servletdungeoncrawler.engine.objects.item.DamageType;
 import com.mckeydonelly.servletdungeoncrawler.engine.objects.item.DefenseType;
 import com.mckeydonelly.servletdungeoncrawler.repositories.ItemRepository;
-import com.mckeydonelly.servletdungeoncrawler.user.SessionManager;
+import com.mckeydonelly.servletdungeoncrawler.session.SessionManager;
 import com.mckeydonelly.servletdungeoncrawler.user.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -47,7 +47,7 @@ public class InventoryServlet extends HttpServlet {
                 .map(item -> ItemInfo.builder()
                         .imgPath(item.getImgPath())
                         .name(item.getName())
-                        .type(item.getType().toString())
+                        .type(item.getType().toString().toLowerCase())
                         .weight(item.getWeight())
                         .damage(item.getDamageTypeList().get(DamageType.NORMAL))
                         .magicDamage(item.getDamageTypeList().get(DamageType.MAGIC))

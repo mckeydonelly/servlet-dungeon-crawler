@@ -8,7 +8,7 @@ import com.mckeydonelly.servletdungeoncrawler.engine.objects.item.Item;
 import com.mckeydonelly.servletdungeoncrawler.repositories.CrateRepository;
 import com.mckeydonelly.servletdungeoncrawler.repositories.ItemRepository;
 import com.mckeydonelly.servletdungeoncrawler.repositories.NpcRepository;
-import com.mckeydonelly.servletdungeoncrawler.user.SessionManager;
+import com.mckeydonelly.servletdungeoncrawler.session.SessionManager;
 import com.mckeydonelly.servletdungeoncrawler.user.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;

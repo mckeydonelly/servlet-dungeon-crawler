@@ -45,11 +45,17 @@ public class AnswerActionManager {
     private boolean checkQuest(User user, AnswerAction answerAction) {
         Quest quest = questRepository.findById(answerAction.getQuestId());
 
+        boolean isSuccess;
         if(quest.getQuestType() == QuestType.ENEMY_KILL) {
-            return user.getEnemyKilled().containsKey(quest.getTargetId());
+             isSuccess = user.getEnemyKilled().containsKey(quest.getTargetId());
         } else {
-            return user.getInventory().contains(itemRepository.findById(quest.getTargetId()).getId());
+            isSuccess = user.getInventory().contains(itemRepository.findById(quest.getTargetId()).getId());
         }
 
+        if(isSuccess) {
+            user.getQuests().put(answerAction.getQuestId(), QuestStatus.SUCCEEDED);
+        }
+
+        return isSuccess;
     }
 }

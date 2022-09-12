@@ -6,12 +6,10 @@ import com.mckeydonelly.servletdungeoncrawler.engine.objects.npc.Npc;
 import com.mckeydonelly.servletdungeoncrawler.engine.objects.npc.dialog.Dialog;
 import com.mckeydonelly.servletdungeoncrawler.engine.objects.npc.dialog.AnswerActionManager;
 import com.mckeydonelly.servletdungeoncrawler.engine.objects.npc.dialog.answer.Answer;
-import com.mckeydonelly.servletdungeoncrawler.engine.objects.npc.dialog.answer.AnswerAction;
-import com.mckeydonelly.servletdungeoncrawler.engine.objects.npc.dialog.answer.AnswerActionType;
 import com.mckeydonelly.servletdungeoncrawler.repositories.DialogRepository;
 import com.mckeydonelly.servletdungeoncrawler.repositories.NpcRepository;
 import com.mckeydonelly.servletdungeoncrawler.repositories.QuestRepository;
-import com.mckeydonelly.servletdungeoncrawler.user.SessionManager;
+import com.mckeydonelly.servletdungeoncrawler.session.SessionManager;
 import com.mckeydonelly.servletdungeoncrawler.user.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -31,18 +29,15 @@ public class SpeakServlet extends HttpServlet {
     private final AnswerActionManager answerActionManager;
     private final NpcRepository npcRepository;
     private final DialogRepository dialogRepository;
-    private final QuestRepository questRepository;
 
     public SpeakServlet(SessionManager sessionManager,
                         AnswerActionManager answerActionManager,
                         NpcRepository npcRepository,
-                        DialogRepository dialogRepository,
-                        QuestRepository questRepository) {
+                        DialogRepository dialogRepository) {
         this.sessionManager = sessionManager;
         this.answerActionManager = answerActionManager;
         this.npcRepository = npcRepository;
         this.dialogRepository = dialogRepository;
-        this.questRepository = questRepository;
     }
 
     @Override
