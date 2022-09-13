@@ -6,7 +6,7 @@
 
     <groupId>com.mckeydonelly</groupId>
     <artifactId>servletdungeoncrawler</artifactId>
-    <version>servletdungeoncrawler</version>
+    <version>1.0</version>
     <name>servlet-dungeon-crawler</name>
     <packaging>war</packaging>
 
@@ -91,6 +91,12 @@
             <groupId>org.glassfish.web</groupId>
             <artifactId>jakarta.servlet.jsp.jstl</artifactId>
             <version>3.0.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>jakarta.servlet.jsp.jstl</groupId>
+                    <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>jakarta.servlet.jsp.jstl</groupId>
@@ -111,6 +117,7 @@
     </dependencies>
 
     <build>
+        <finalName>servlet-dungeon-crawler</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

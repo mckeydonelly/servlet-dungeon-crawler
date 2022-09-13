@@ -22,3 +22,15 @@ TODO:
 The default settings are contained in the folder ```resources```:
 - ```app.properties``` - global app settings
 - ```game/``` - game settings
+
+Build project:
+
+```
+$ cd servlet-dungeon-crawler
+$ mvn package
+```
+
+Run project:
+```
+$ docker-compose up -d
+```
