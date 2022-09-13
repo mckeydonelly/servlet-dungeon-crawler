@@ -34,3 +34,4 @@ Run project:
 ```
 $ docker-compose up -d
 ```
+After you may open project on http://localhost:8080
