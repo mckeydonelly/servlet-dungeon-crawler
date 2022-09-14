@@ -1,10 +1,7 @@
 name: Fly Deploy
 on:
   workflow_dispatch:
-    inputs:
-      message:
-        description: "Fly.io deploy"
-        required: false
+
 env:
   FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 jobs:
