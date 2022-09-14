@@ -7,6 +7,8 @@ import jakarta.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static java.util.Objects.isNull;
@@ -27,6 +29,9 @@ public class SessionManager {
         if (isNull(userId)) {
             return Optional.empty();
         }
+
+        List<String> list = new ArrayList<>();
+        list.stream().peek(System.out::println).;
 
         return Optional.of(userRepository.findById(userId));
     }

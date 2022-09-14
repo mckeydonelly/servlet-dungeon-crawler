@@ -1,10 +1,7 @@
 name: Fly Deploy
 on:
   workflow_dispatch:
-    inputs:
-      message:
-        description: "Fly.io deploy"
-        required: false
+
 env:
   FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 jobs:
@@ -13,5 +10,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - uses: superfly/flyctl-actions/setup-flyctl@v.1.1
       - run: flyctl deploy --remote-only
