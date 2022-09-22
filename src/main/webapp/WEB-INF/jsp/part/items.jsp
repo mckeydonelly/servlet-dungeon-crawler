@@ -4,7 +4,7 @@
 <c:forEach items="${objects}" var="object">
     <div id="object${object.getId()}card" class="card mb-1 text-white bg-secondary">
         <img class="card-img-top"
-             src="${object.getImgPath()}"
+             src="${pageContext.request.contextPath}/${object.getImgPath()}"
              alt="Card image">
         <div class="card-body">
             <h4 class="card-title">${object.getName()} <c:if

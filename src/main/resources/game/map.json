@@ -1,5 +1,6 @@
 {
   "prologue": "Hello traveler. You didn't suspect anything about the future, but it found you by itself.",
+  "mapImgPath": "img/DefaultMap.png",
   "locationsOnMap": {
     "1": {
       "id": 1,

@@ -1,10 +1,12 @@
-package com.mckeydonelly.servletdungeoncrawler.servlet;
+package com.mckeydonelly.servletdungeoncrawler.servlet.user.inventory;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mckeydonelly.servletdungeoncrawler.engine.dto.ItemInfo;
 import com.mckeydonelly.servletdungeoncrawler.engine.objects.item.DamageType;
 import com.mckeydonelly.servletdungeoncrawler.engine.objects.item.DefenseType;
+import com.mckeydonelly.servletdungeoncrawler.engine.objects.item.Item;
 import com.mckeydonelly.servletdungeoncrawler.repositories.ItemRepository;
+import com.mckeydonelly.servletdungeoncrawler.repositories.Repository;
 import com.mckeydonelly.servletdungeoncrawler.session.SessionManager;
 import com.mckeydonelly.servletdungeoncrawler.user.User;
 import jakarta.servlet.ServletException;
@@ -22,9 +24,9 @@ public class InventoryServlet extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(InventoryServlet.class);
     private final ObjectMapper jsonConverter = new ObjectMapper();
     private final SessionManager sessionManager;
-    private final ItemRepository itemRepository;
+    private final Repository<Item, String> itemRepository;
 
-    public InventoryServlet(SessionManager sessionManager, ItemRepository itemRepository) {
+    public InventoryServlet(SessionManager sessionManager, Repository<Item, String> itemRepository) {
         this.sessionManager = sessionManager;
         this.itemRepository = itemRepository;
     }
@@ -36,11 +38,14 @@ public class InventoryServlet extends HttpServlet {
 
         response.setContentType("application/json; charset=utf-8");
         var writer = response.getWriter();
-        writer.print(jsonConverter.writeValueAsString(prepareItemInfo(user)));
+        String inventoryJson = jsonConverter.writeValueAsString(prepareItemInfo(user));
+        logger.info("Response: {}", inventoryJson);
+        writer.print(inventoryJson);
         writer.flush();
     }
 
     private List<ItemInfo> prepareItemInfo(User user) {
+        logger.info("Preparing ItemInfo...");
         return user.getInventory()
                 .stream()
                 .map(itemRepository::findById)

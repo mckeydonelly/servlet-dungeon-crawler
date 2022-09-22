@@ -28,7 +28,7 @@
         <div class="col-4">
             <div id="npc${npc.getNpcId()}card" class="card mb-1 text-white bg-secondary">
                 <img class="card-img-top"
-                     src="${dialogInfo.getImgPath()}"
+                     src="${pageContext.request.contextPath}/${dialogInfo.getImgPath()}"
                      alt="Card image">
             </div>
         </div>

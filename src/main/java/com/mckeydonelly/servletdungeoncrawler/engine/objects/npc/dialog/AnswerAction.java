@@ -1,4 +1,4 @@
-package com.mckeydonelly.servletdungeoncrawler.engine.objects.npc.dialog.answer;
+package com.mckeydonelly.servletdungeoncrawler.engine.objects.npc.dialog;
 
 import lombok.Data;
 

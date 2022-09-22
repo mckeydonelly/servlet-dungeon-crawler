@@ -1,10 +1,10 @@
 package com.mckeydonelly.servletdungeoncrawler.engine.dto;
 
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 
 @Builder
-@Data
+@Getter
 public class NpcInfo {
     private int mapId;
     private String npcId;

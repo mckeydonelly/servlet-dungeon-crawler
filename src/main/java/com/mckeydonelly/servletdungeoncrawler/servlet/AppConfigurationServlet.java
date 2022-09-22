@@ -2,10 +2,22 @@ package com.mckeydonelly.servletdungeoncrawler.servlet;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mckeydonelly.servletdungeoncrawler.engine.map.GameMap;
+import com.mckeydonelly.servletdungeoncrawler.engine.objects.crate.Crate;
+import com.mckeydonelly.servletdungeoncrawler.engine.objects.item.Item;
+import com.mckeydonelly.servletdungeoncrawler.engine.objects.npc.Npc;
 import com.mckeydonelly.servletdungeoncrawler.engine.objects.npc.dialog.AnswerActionManager;
+import com.mckeydonelly.servletdungeoncrawler.engine.objects.npc.dialog.Dialog;
+import com.mckeydonelly.servletdungeoncrawler.engine.quest.Quest;
 import com.mckeydonelly.servletdungeoncrawler.repositories.*;
+import com.mckeydonelly.servletdungeoncrawler.servlet.item.TakeServlet;
+import com.mckeydonelly.servletdungeoncrawler.servlet.map.MoveServlet;
+import com.mckeydonelly.servletdungeoncrawler.servlet.user.inventory.InventoryServlet;
+import com.mckeydonelly.servletdungeoncrawler.servlet.user.QuestServlet;
+import com.mckeydonelly.servletdungeoncrawler.servlet.user.SpeakServlet;
+import com.mckeydonelly.servletdungeoncrawler.servlet.user.StatisticServlet;
 import com.mckeydonelly.servletdungeoncrawler.settings.SettingsType;
 import com.mckeydonelly.servletdungeoncrawler.session.SessionManager;
+import com.mckeydonelly.servletdungeoncrawler.user.User;
 import com.mckeydonelly.servletdungeoncrawler.user.UserManager;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletContextEvent;
@@ -16,7 +28,6 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.InvalidPathException;
 import java.util.Properties;
 
 @WebListener
@@ -31,19 +42,21 @@ public class AppConfigurationServlet implements ServletContextListener {
 
         Properties appSettings = initProperties();
 
-        UserRepository userRepository = new UserRepositoryInMemory();
+        logger.info("Initialization repositories...");
+        Repository<User, String> userRepository = new UserRepositoryInMemory();
 
         GameMap gameMap = initializeJson(appSettings.getProperty(SettingsType.MAP_CONFIG_FILE_PATH.getTypeCode()), GameMap.class);
-        CrateRepository crateRepository = initializeJson(appSettings.getProperty(SettingsType.CRATE_CONFIG_FILE_PATH.getTypeCode()), CrateRepositoryInMemory.class);
-        DialogRepository dialogRepository = initializeJson(appSettings.getProperty(SettingsType.DIALOG_CONFIG_FILE_PATH.getTypeCode()), DialogRepositoryInMemory.class);
-        NpcRepository npcRepository = initializeJson(appSettings.getProperty(SettingsType.NPC_CONFIG_FILE_PATH.getTypeCode()), NpcRepositoryInMemory.class);
-        QuestRepository questRepository = initializeJson(appSettings.getProperty(SettingsType.QUEST_CONFIG_FILE_PATH.getTypeCode()), QuestRepositoryInMemory.class);
-        ItemRepository itemRepository = initializeJson(appSettings.getProperty(SettingsType.ITEM_CONFIG_FILE_PATH.getTypeCode()), ItemRepositoryInMemory.class);
+        Repository<Crate, String> crateRepository = initializeJson(appSettings.getProperty(SettingsType.CRATE_CONFIG_FILE_PATH.getTypeCode()), CrateRepositoryInMemory.class);
+        Repository<Dialog, String> dialogRepository = initializeJson(appSettings.getProperty(SettingsType.DIALOG_CONFIG_FILE_PATH.getTypeCode()), DialogRepositoryInMemory.class);
+        Repository<Npc, String> npcRepository = initializeJson(appSettings.getProperty(SettingsType.NPC_CONFIG_FILE_PATH.getTypeCode()), NpcRepositoryInMemory.class);
+        Repository<Quest, String> questRepository = initializeJson(appSettings.getProperty(SettingsType.QUEST_CONFIG_FILE_PATH.getTypeCode()), QuestRepositoryInMemory.class);
+        Repository<Item, String> itemRepository = initializeJson(appSettings.getProperty(SettingsType.ITEM_CONFIG_FILE_PATH.getTypeCode()), ItemRepositoryInMemory.class);
 
         SessionManager sessionManager = new SessionManager(userRepository);
         UserManager userManager = new UserManager(userRepository, sessionManager);
         AnswerActionManager answerActionManager = new AnswerActionManager(questRepository, itemRepository);
 
+        logger.info("Registering servlets...");
         ServletContext context = sce.getServletContext();
         context.addServlet("IndexServlet", new IndexServlet(sessionManager, gameMap))
                 .addMapping(appSettings.getProperty(SettingsType.SERVLET_INIT_PATH.getTypeCode()));
@@ -73,11 +86,7 @@ public class AppConfigurationServlet implements ServletContextListener {
                 .addMapping(appSettings.getProperty(SettingsType.SERVLET_UNIT_SPEAK_PATH.getTypeCode()));
         context.addServlet("StatisticServlet", new StatisticServlet(sessionManager))
                 .addMapping(appSettings.getProperty(SettingsType.SERVLET_STATISTIC_PATH.getTypeCode()));
-    }
-
-    @Override
-    public void contextDestroyed(ServletContextEvent sce) {
-        ServletContextListener.super.contextDestroyed(sce);
+        logger.info("Servlet registered: {}", context.getServletRegistrations());
     }
 
     private Properties initProperties() {
@@ -102,7 +111,7 @@ public class AppConfigurationServlet implements ServletContextListener {
         try (InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(filePath)) {
             returnObject = mapper.readValue(in, destinationClass);
         } catch (IOException | NullPointerException e) {
-            logger.error("Error with read quest file {}", filePath, e);
+            logger.error("Error with read file {}", filePath, e);
             throw new IllegalArgumentException(e);
         }
 

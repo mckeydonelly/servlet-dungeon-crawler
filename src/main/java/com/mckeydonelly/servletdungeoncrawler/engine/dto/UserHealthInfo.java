@@ -1,10 +1,10 @@
 package com.mckeydonelly.servletdungeoncrawler.engine.dto;
 
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 
 @Builder
-@Data
+@Getter
 public class UserHealthInfo {
     private int health;
     private int maxHealth;

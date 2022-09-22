@@ -1,4 +1,4 @@
-package com.mckeydonelly.servletdungeoncrawler.servlet;
+package com.mckeydonelly.servletdungeoncrawler.servlet.map;
 
 import com.mckeydonelly.servletdungeoncrawler.engine.map.GameMap;
 import com.mckeydonelly.servletdungeoncrawler.session.SessionManager;
@@ -27,10 +27,17 @@ public class MoveServlet extends HttpServlet {
         logger.info("Incoming request to {}: {}", request.getRequestURL(), request.getQueryString());
         var user = sessionManager.validateUser(request);
 
-        int nextLocationId = Integer.parseInt(request.getParameter("nextLocationId"));
-        user.getGameState().addGameLog("You move to location: " + gameMap.fetchLocationById(nextLocationId).getName());
+        int nextLocationId = 0;
+        try {
+            nextLocationId = Integer.parseInt(request.getParameter("nextLocationId"));
+        } catch (NumberFormatException e) {
+            logger.error("nextLocationId may have only digits");
+            throw new IllegalArgumentException(e);
+        }
+        user.getState().addGameLog("You move to location: " + gameMap.fetchLocationById(nextLocationId).getName());
         user.setCurrentLocationId(nextLocationId);
 
-        response.sendRedirect("room");
+        logger.info("User move to location: name={}, id={}", gameMap.fetchLocationById(nextLocationId).getName(), nextLocationId);
+        response.sendRedirect("/room");
     }
 }

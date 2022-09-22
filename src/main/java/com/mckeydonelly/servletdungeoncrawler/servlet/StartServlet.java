@@ -24,6 +24,7 @@ public class StartServlet extends HttpServlet {
         logger.info("Creating user...");
         userManager.createUser(request);
 
+        logger.info("Redirect to start location");
         response.sendRedirect("room");
     }
 }

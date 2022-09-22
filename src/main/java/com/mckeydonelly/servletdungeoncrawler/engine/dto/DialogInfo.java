@@ -1,12 +1,12 @@
 package com.mckeydonelly.servletdungeoncrawler.engine.dto;
 
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 
 import java.util.List;
 
 @Builder
-@Data
+@Getter
 public class DialogInfo {
     private int phraseId;
     private String npcId;

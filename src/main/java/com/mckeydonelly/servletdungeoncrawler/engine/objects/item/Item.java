@@ -1,11 +1,12 @@
 package com.mckeydonelly.servletdungeoncrawler.engine.objects.item;
 
+import com.mckeydonelly.servletdungeoncrawler.engine.objects.Entity;
 import lombok.Data;
 
 import java.util.Map;
 
 @Data
-public class Item {
+public class Item extends Entity {
     private String id;
     private String name;
     private String imgPath;

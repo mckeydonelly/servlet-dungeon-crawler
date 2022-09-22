@@ -1,4 +1,4 @@
-package com.mckeydonelly.servletdungeoncrawler.engine.gamestate;
+package com.mckeydonelly.servletdungeoncrawler.engine.state;
 
 import lombok.Builder;
 import lombok.Data;

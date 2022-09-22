@@ -41,7 +41,7 @@
             <div class="row g-2 py-1">
                 <div class="col">
                     <img class="img-fluid"
-                         src="${pageContext.request.contextPath}/img/DefaultMap.png"
+                         src="${pageContext.request.contextPath}/${mapImgPath}"
                          alt="Quest Map">
                 </div>
             </div>

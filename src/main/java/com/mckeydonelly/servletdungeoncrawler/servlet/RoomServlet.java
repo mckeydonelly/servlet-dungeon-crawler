@@ -1,13 +1,12 @@
 package com.mckeydonelly.servletdungeoncrawler.servlet;
 
 import com.mckeydonelly.servletdungeoncrawler.engine.dto.*;
-import com.mckeydonelly.servletdungeoncrawler.engine.gamestate.GameState;
+import com.mckeydonelly.servletdungeoncrawler.engine.state.State;
 import com.mckeydonelly.servletdungeoncrawler.engine.map.GameMap;
 import com.mckeydonelly.servletdungeoncrawler.engine.objects.crate.Crate;
 import com.mckeydonelly.servletdungeoncrawler.engine.objects.item.Item;
-import com.mckeydonelly.servletdungeoncrawler.repositories.CrateRepository;
-import com.mckeydonelly.servletdungeoncrawler.repositories.ItemRepository;
-import com.mckeydonelly.servletdungeoncrawler.repositories.NpcRepository;
+import com.mckeydonelly.servletdungeoncrawler.engine.objects.npc.Npc;
+import com.mckeydonelly.servletdungeoncrawler.repositories.Repository;
 import com.mckeydonelly.servletdungeoncrawler.session.SessionManager;
 import com.mckeydonelly.servletdungeoncrawler.user.User;
 import jakarta.servlet.ServletException;
@@ -26,12 +25,15 @@ import java.util.stream.Collectors;
 public class RoomServlet extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(RoomServlet.class);
     private final SessionManager sessionManager;
-    private final ItemRepository itemRepository;
-    private final CrateRepository crateRepository;
-    private final NpcRepository npcRepository;
+    private final Repository<Item, String> itemRepository;
+    private final Repository<Crate, String> crateRepository;
+    private final Repository<Npc, String> npcRepository;
     private final GameMap gameMap;
 
-    public RoomServlet(SessionManager sessionManager, ItemRepository itemRepository, CrateRepository crateRepository, NpcRepository npcRepository, GameMap gameMap) {
+    public RoomServlet(SessionManager sessionManager,
+                       Repository<Item, String> itemRepository,
+                       Repository<Crate, String> crateRepository,
+                       Repository<Npc, String> npcRepository, GameMap gameMap) {
         this.sessionManager = sessionManager;
         this.itemRepository = itemRepository;
         this.crateRepository = crateRepository;
@@ -50,26 +52,35 @@ public class RoomServlet extends HttpServlet {
         List<NpcInfo> npcs = prepareNpcInfo(user);
         String locationName = gameMap.fetchLocationById(user.getCurrentLocationId()).getName();
 
+        request.setAttribute("mapImgPath", gameMap.getMapImgPath());
         request.setAttribute("paths", paths);
         request.setAttribute("userHealthInfo", userHealthInfo);
         request.setAttribute("objects", objectsOnLoc);
         request.setAttribute("npcs", npcs);
         request.setAttribute("locationName", locationName);
-        request.setAttribute("gameLog", user.getGameState().getGameLog());
+        request.setAttribute("gameLog", user.getState().getGameLog());
 
+        logger.info("Response: mapImgPath={}, paths={}, userHealthInfo={}, objectsOnLoc={}, npcs={}, locationName={}, gameLogs=...",
+                gameMap.getMapImgPath(),
+                paths,
+                userHealthInfo,
+                objectsOnLoc,
+                npcs,
+                locationName);
         getServletContext()
                 .getRequestDispatcher("/WEB-INF/jsp/game.jsp")
                 .forward(request, response);
     }
 
     private List<PathInfo> preparePathsInfo(User user) {
-        GameState gameState = user.getGameState();
+        logger.info("Preparing PathsInfo...");
+        State state = user.getState();
         return gameMap.fetchLocationById(user.getCurrentLocationId())
                 .getPaths()
                 .entrySet()
                 .stream()
                 .map(entry -> PathInfo.builder()
-                        .isOpened(gameState.checkPath(entry.getKey(), entry.getValue()))
+                        .isOpened(state.checkPath(user.getCurrentLocationId()+ "-" + entry.getKey(), entry.getValue()))
                         .locationInfo(LocationInfo.builder()
                                 .id(entry.getValue().getLinkedLocationId())
                                 .name(gameMap.fetchLocationById(entry.getValue().getLinkedLocationId()).getName())
@@ -79,6 +90,7 @@ public class RoomServlet extends HttpServlet {
     }
 
     private static UserHealthInfo prepareUserHealthInfo(User user) {
+        logger.info("Preparing UserHealthInfo...");
         return UserHealthInfo.builder()
                 .health(user.getHealth())
                 .maxHealth(user.getMaxHealth())
@@ -87,24 +99,14 @@ public class RoomServlet extends HttpServlet {
     }
 
     private List<LocationObjectInfo> prepareLocationObjectsInfo(User user) {
-        GameState gameState = user.getGameState();
+        logger.info("Preparing LocationObjectsInfo...");
+        State state = user.getState();
 
-        Map<Integer, Item> itemOnLoc = gameMap.fetchLocationById(user.getCurrentLocationId())
-                .getItemOnLocationList()
-                .entrySet()
-                .stream()
-                .filter(entry -> gameState.checkItem(entry.getKey()))
-                .collect(Collectors.toMap(
-                        Map.Entry::getKey,
-                        entry -> itemRepository.findById(entry.getValue())));
-        Map<Integer, Crate> crateOnLoc = gameMap.fetchLocationById(user.getCurrentLocationId())
-                .getCrateOnLocationList()
-                .entrySet()
-                .stream()
-                .collect(Collectors.toMap(
-                        Map.Entry::getKey,
-                        entry -> crateRepository.findById(entry.getValue())));
+        Map<Integer, Item> itemOnLoc = getItemsOnLoc(user, state);
+        Map<Integer, Crate> crateOnLoc = getCratesOnLoc(user);
+
         List<LocationObjectInfo> objectsOnLoc = new ArrayList<>();
+
         objectsOnLoc.addAll(itemOnLoc.entrySet()
                 .stream()
                 .map(entry -> LocationObjectInfo.builder()
@@ -116,6 +118,7 @@ public class RoomServlet extends HttpServlet {
                         .isActive(true)
                         .build())
                 .collect(Collectors.toList()));
+
         objectsOnLoc.addAll(crateOnLoc.entrySet()
                 .stream()
                 .map(entry -> LocationObjectInfo.builder()
@@ -124,20 +127,44 @@ public class RoomServlet extends HttpServlet {
                         .type(LocationObjectInfo.ObjectType.CRATE)
                         .name(entry.getValue().getName())
                         .imgPath(entry.getValue().getImgPathClosed())
-                        .isActive(!gameState.checkCrate(entry.getKey()))
+                        .isActive(!state.checkCrate(entry.getKey()))
                         .build())
                 .collect(Collectors.toList()));
         return objectsOnLoc;
     }
 
+    private Map<Integer, Crate> getCratesOnLoc(User user) {
+        logger.info("Preparing crates on location");
+        return gameMap.fetchLocationById(user.getCurrentLocationId())
+                .getCrateOnLocationList()
+                .entrySet()
+                .stream()
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        entry -> crateRepository.findById(entry.getValue())));
+    }
+
+    private Map<Integer, Item> getItemsOnLoc(User user, State state) {
+        logger.info("Preparing items on location");
+        return gameMap.fetchLocationById(user.getCurrentLocationId())
+                .getItemOnLocationList()
+                .entrySet()
+                .stream()
+                .filter(entry -> state.checkItem(entry.getKey()))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        entry -> itemRepository.findById(entry.getValue())));
+    }
+
     private List<NpcInfo> prepareNpcInfo(User user) {
-        GameState gameState = user.getGameState();
+        logger.info("Preparing NpcInfo...");
+        State state = user.getState();
 
         return gameMap.fetchLocationById(user.getCurrentLocationId())
                 .getNpcOnLocationList()
                 .entrySet()
                 .stream()
-                .filter(entry -> gameState.checkNpc(entry.getKey()))
+                .filter(entry -> state.checkNpc(entry.getKey()))
                 .collect(Collectors.toMap(
                         Map.Entry::getKey,
                         entry -> npcRepository.findById(entry.getValue())

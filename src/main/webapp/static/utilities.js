@@ -1,7 +1,7 @@
 function getStatistic() {
     $("#statistic-table > tbody").html("");
 
-    $.get('/statistic', function (response) {
+    $.get('/user/statistic', function (response) {
         $.each(response, function (name, value) {
             let row = $('<tr>').html(
                 "<th scope='row'>" + name + "</th>" +
@@ -14,7 +14,7 @@ function getStatistic() {
 function getInventory() {
     $("#inventory-table > tbody").html("");
 
-    $.get('/inventory', function (response) {
+    $.get('/user/inventory', function (response) {
         $.each(response, function (index, item) {
             let row = $('<tr>').html("<td>"
                 + "<img src='" + item.imgPath + "' style='max-width:30px; max-height:30px;'>" + "</td><td>"
@@ -34,7 +34,7 @@ function getInventory() {
 function getQuests() {
     $("#quests-table > tbody").html("");
 
-    $.get('/quests', function (response) {
+    $.get('/user/quests', function (response) {
         $.each(response, function (index, quest) {
             let row = $('<tr>').html("<td>"
                 + quest.issuedBy + "</td><td>"
@@ -50,9 +50,9 @@ function getQuests() {
 function objectAction(type, id, objectId, cardId) {
     let url;
     if(type === "CRATE") {
-        url = '/open'
+        url = '/crate/open'
     } else {
-        url = '/take'
+        url = '/item/take'
     }
     $.get(url, { id: id, objectId: objectId }, function (response) {
         $(cardId).remove();
@@ -60,13 +60,13 @@ function objectAction(type, id, objectId, cardId) {
 }
 
 function nextPath(id) {
-    $.redirect("/move", {
+    $.redirect("/map/move", {
         nextLocationId: id
     }, "POST");
 }
 
 function nextPhrase(npcId, answerId, phraseId) {
-    $.redirect("/speak", {
+    $.redirect("/user/speak", {
         npcId: npcId,
         answerId: answerId,
         phraseId: phraseId

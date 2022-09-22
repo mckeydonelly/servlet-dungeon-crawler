@@ -1,12 +1,14 @@
-package com.mckeydonelly.servletdungeoncrawler.servlet;
+package com.mckeydonelly.servletdungeoncrawler.servlet.user;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mckeydonelly.servletdungeoncrawler.engine.dto.QuestInfo;
+import com.mckeydonelly.servletdungeoncrawler.engine.objects.item.Item;
+import com.mckeydonelly.servletdungeoncrawler.engine.objects.npc.Npc;
 import com.mckeydonelly.servletdungeoncrawler.engine.quest.Quest;
 import com.mckeydonelly.servletdungeoncrawler.engine.quest.QuestType;
 import com.mckeydonelly.servletdungeoncrawler.repositories.ItemRepository;
 import com.mckeydonelly.servletdungeoncrawler.repositories.NpcRepository;
-import com.mckeydonelly.servletdungeoncrawler.repositories.QuestRepository;
+import com.mckeydonelly.servletdungeoncrawler.repositories.Repository;
 import com.mckeydonelly.servletdungeoncrawler.session.SessionManager;
 import com.mckeydonelly.servletdungeoncrawler.user.User;
 import jakarta.servlet.ServletException;
@@ -24,11 +26,14 @@ public class QuestServlet extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(QuestServlet.class);
     private final ObjectMapper jsonConverter = new ObjectMapper();
     private final SessionManager sessionManager;
-    private final QuestRepository questRepository;
-    private final ItemRepository itemRepository;
-    private final NpcRepository npcRepository;
+    private final Repository<Quest, String> questRepository;
+    private final Repository<Item, String> itemRepository;
+    private final Repository<Npc, String> npcRepository;
 
-    public QuestServlet(SessionManager sessionManager, QuestRepository questRepository, ItemRepository itemRepository, NpcRepository npcRepository) {
+    public QuestServlet(SessionManager sessionManager,
+                        Repository<Quest, String> questRepository,
+                        Repository<Item, String> itemRepository,
+                        Repository<Npc, String> npcRepository) {
         this.sessionManager = sessionManager;
         this.questRepository = questRepository;
         this.itemRepository = itemRepository;
@@ -42,11 +47,14 @@ public class QuestServlet extends HttpServlet {
 
         response.setContentType("application/json; charset=utf-8");
         var writer = response.getWriter();
-        writer.print(jsonConverter.writeValueAsString(prepareQuestInfo(user)));
+        String questJson = jsonConverter.writeValueAsString(prepareQuestInfo(user));
+        logger.info("Response: {}", questJson);
+        writer.print(questJson);
         writer.flush();
     }
 
     private List<QuestInfo> prepareQuestInfo(User user) {
+        logger.info("Preparing QuestInfo...");
         return user.getQuests()
                 .entrySet()
                 .stream()
@@ -73,7 +81,6 @@ public class QuestServlet extends HttpServlet {
         return switch (questType) {
             case ITEM_BRING -> itemRepository.findById(targetId).getName();
             case ENEMY_KILL -> npcRepository.findById(targetId).getName();
-            case BOTH -> "Bring " + itemRepository.findById(targetId).getName() + " \n" + "Kill " + npcRepository.findById(targetId).getName();
         };
     }
 }

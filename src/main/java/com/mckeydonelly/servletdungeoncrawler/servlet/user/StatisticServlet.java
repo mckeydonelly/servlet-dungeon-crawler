@@ -1,7 +1,8 @@
-package com.mckeydonelly.servletdungeoncrawler.servlet;
+package com.mckeydonelly.servletdungeoncrawler.servlet.user;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mckeydonelly.servletdungeoncrawler.session.SessionManager;
+import com.mckeydonelly.servletdungeoncrawler.user.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -29,29 +30,31 @@ public class StatisticServlet extends HttpServlet {
 
         response.setContentType("application/json; charset=utf-8");
         var writer = response.getWriter();
-        writer.print(jsonConverter.writeValueAsString(setStatistic(request)));
+        String statisticJson = jsonConverter.writeValueAsString(setStatistic(request));
+        logger.info("Response: {}", statisticJson);
+        writer.print(statisticJson);
         writer.flush();
     }
 
     private Map<String, String> setStatistic(HttpServletRequest request) {
         Map<String, String> result = new HashMap<>();
 
-        var user = sessionManager.getUser(request);
+        var userOptional = sessionManager.getUser(request);
 
-        if(user.isEmpty()) {
+        if(userOptional.isEmpty()) {
             result.put("User", "No user data");
             return result;
         }
+        User user = userOptional.get();
 
-        result.put("totalGames", String.valueOf(user.get().getTotalGames()));
-        result.put("enemyKilledInThisGame", String.valueOf(user.get().getEnemyKilled().size()));
+        result.put("totalGames", String.valueOf(user.getTotalGames()));
+        result.put("enemyKilledInThisGame", String.valueOf(user.getEnemyKilled().size()));
         result.put("ip", getUserIp(request));
 
         return result;
     }
 
     private String getUserIp(HttpServletRequest request) {
-
         String remoteAddr = "";
 
         if (request != null) {

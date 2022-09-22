@@ -11,16 +11,16 @@ public enum SettingsType {
     SERVLET_INIT_PATH("app.servlet.init", "Initialization servlet path"),
     SERVLET_START_PATH("app.servlet.start", "Starting game servlet path"),
     SERVLET_ROOM_PATH("app.servlet.room", "Room game servlet path"),
-    SERVLET_STATISTIC_PATH("app.servlet.statistic", "Statistic game servlet path"),
+    SERVLET_STATISTIC_PATH("app.servlet.user.statistic", "Statistic game servlet path"),
     SERVLET_MOVE_PATH("app.servlet.map.move", "Map move servlet path"),
     SERVLET_CRATE_ACTION_PATH("app.servlet.location.crateAction", "Open crate action servlet path"),
     SERVLET_TAKE_ACTION_PATH("app.servlet.location.takeAction", "Item on map servlet path"),
     SERVLET_UNIT_ATTACK_PATH("app.servlet.unit.attack", "Attack unit action servlet path"),
     SERVLET_UNIT_SPEAK_PATH("app.servlet.unit.speak", "Speak with unit action servlet path"),
-    SERVLET_INVENTORY_PATH("app.servlet.inventory", "Open inventory servlet path"),
-    SERVLET_QUESTS_PATH("app.servlet.quests", "Quest menu servlet path"),
-    SERVLET_EQUIP_PATH("app.servlet.inventory.equip", "Equip item servlet path"),
-    SERVLET_UNEQUIP_PATH("app.servlet.inventory.uneqip", "Unequip item servlet path");
+    SERVLET_INVENTORY_PATH("app.servlet.user.inventory", "Open inventory servlet path"),
+    SERVLET_QUESTS_PATH("app.servlet.user.quests", "Quest menu servlet path"),
+    SERVLET_EQUIP_PATH("app.servlet.user.inventory.equip", "Equip item servlet path"),
+    SERVLET_UNEQUIP_PATH("app.servlet.user.inventory.uneqip", "Unequip item servlet path");
 
     private final String typeCode;
     private final String description;

@@ -1,6 +1,5 @@
-package com.mckeydonelly.servletdungeoncrawler.servlet;
+package com.mckeydonelly.servletdungeoncrawler.servlet.item;
 
-import com.mckeydonelly.servletdungeoncrawler.engine.gamestate.ItemState;
 import com.mckeydonelly.servletdungeoncrawler.session.SessionManager;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -23,13 +22,19 @@ public class TakeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         logger.info("Incoming request to {}: {}", request.getRequestURL(), request.getQueryString());
         var user = sessionManager.validateUser(request);
-        int itemMapId = Integer.parseInt(request.getParameter("id"));
+
+        int itemMapId = 0;
+        try {
+            itemMapId = Integer.parseInt(request.getParameter("id"));
+        } catch (NumberFormatException e) {
+            logger.error("id may have only digits");
+            throw new IllegalArgumentException(e);
+        }
         String itemId = request.getParameter("objectId");
 
-        user.getInventory().add(itemId);
-        user.getGameState().getItemStateOnMap().put(itemMapId, ItemState.builder()
-                .isTaken(true)
-                .build());
+        user.addItem(itemId);
+        user.getState().addItem(itemMapId);
+        logger.info("User add to inventory item: {}", itemId);
 
         response.getWriter().flush();
     }

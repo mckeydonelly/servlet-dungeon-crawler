@@ -26,15 +26,13 @@ public class IndexServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         logger.info("Incoming request to {}: {}", request.getRequestURL(), request.getQueryString());
-        logger.info("Validating user...");
+
         var user = sessionManager.getUser(request);
-
         HttpSession session = request.getSession();
-
         user.ifPresent(value -> session.setAttribute("userName", value.getName()));
         session.setAttribute("questProlog", gameMap.getPrologue());
 
-        logger.info("Redirect to index page");
+        logger.info("Redirect to index page with parameters: userName={}, questProlog={}", session.getAttribute("userName"), gameMap.getPrologue());
         getServletContext()
                 .getRequestDispatcher("/WEB-INF/jsp/index.jsp")
                 .forward(request, response);
