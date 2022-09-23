@@ -28,3 +28,5 @@ Run project:
 $ docker-compose up -d
 ```
 After you may open project on http://localhost:8080
+
+Demo: https://dungeon-crawler-jr3.fly.dev/
