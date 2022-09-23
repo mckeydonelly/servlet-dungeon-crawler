@@ -9,6 +9,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.Objects;
+
+import static java.util.Objects.isNull;
 
 public class TakeServlet extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(TakeServlet.class);
@@ -30,7 +33,12 @@ public class TakeServlet extends HttpServlet {
             logger.error("id may have only digits");
             throw new IllegalArgumentException(e);
         }
-        String itemId = request.getParameter("objectId");
+        Object itemIdTmp = request.getParameter("objectId");
+        if(isNull(itemIdTmp)) {
+            logger.error("Missing parameter: objectId");
+            throw new IllegalArgumentException("Missing parameter: objectId");
+        }
+        String itemId = (String) itemIdTmp;
 
         user.addItem(itemId);
         user.getState().addItem(itemMapId);

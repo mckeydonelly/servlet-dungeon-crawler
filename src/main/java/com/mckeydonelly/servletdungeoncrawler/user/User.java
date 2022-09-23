@@ -50,7 +50,7 @@ public class User extends Entity {
     }
 
     public boolean isExistsItem(String itemId) {
-        return inventory.contains(itemId);
+        return inventory.contains(itemId) || equippedItems.contains(itemId);
     }
 
     public boolean isExistsQuest(String questId) {

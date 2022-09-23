@@ -55,6 +55,6 @@ public class SessionManager {
             return Optional.empty();
         }
 
-        return Optional.of(userRepository.findById(userId));
+        return Optional.ofNullable(userRepository.findById(userId));
     }
 }
