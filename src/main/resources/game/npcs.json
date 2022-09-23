@@ -6,11 +6,11 @@
       "imgPath": "img/npcs/warriorSmall.png",
       "health": 50,
       "maxHealth": 50,
-      "damageTypeList": {
+      "damageTypes": {
         "NORMAL": 1,
         "MAGIC": 0
       },
-      "defenseTypeList": {
+      "defenseTypes": {
         "NORMAL": 1,
         "MAGIC": 0
       },
@@ -22,11 +22,11 @@
       "imgPath": "img/npcs/warriorMiddle.png",
       "health": 70,
       "maxHealth": 70,
-      "damageTypeList": {
+      "damageTypes": {
         "NORMAL": 2,
         "MAGIC": 0
       },
-      "defenseTypeList": {
+      "defenseTypes": {
         "NORMAL": 2,
         "MAGIC": 0
       },
@@ -38,11 +38,11 @@
       "imgPath": "img/npcs/warriorBig.png",
       "health": 90,
       "maxHealth": 90,
-      "damageTypeList": {
+      "damageTypes": {
         "NORMAL": 3,
         "MAGIC": 0
       },
-      "defenseTypeList": {
+      "defenseTypes": {
         "NORMAL": 3,
         "MAGIC": 0
       },
@@ -54,11 +54,11 @@
       "imgPath": "img/npcs/strangeMan.png",
       "health": 9999,
       "maxHealth": 9999,
-      "damageTypeList": {
+      "damageTypes": {
         "NORMAL": 0,
         "MAGIC": 0
       },
-      "defenseTypeList": {
+      "defenseTypes": {
         "NORMAL": 0,
         "MAGIC": 0
       },
@@ -70,11 +70,11 @@
       "imgPath": "img/npcs/warriorNamedLans.png",
       "health": 110,
       "maxHealth": 110,
-      "damageTypeList": {
+      "damageTypes": {
         "NORMAL": 4,
         "MAGIC": 0
       },
-      "defenseTypeList": {
+      "defenseTypes": {
         "NORMAL": 4,
         "MAGIC": 0
       },
