@@ -28,7 +28,7 @@ class TakeServletTest {
     private User user;
 
     @Test
-    void should_add_item_to_user_inventory() throws IOException, ServletException {
+    void should_add_item_to_user_inventory() throws IOException {
         user = User.builder()
                 .id("Test")
                 .name("Test")

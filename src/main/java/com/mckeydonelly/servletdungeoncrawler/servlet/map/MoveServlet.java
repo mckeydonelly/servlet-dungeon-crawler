@@ -23,7 +23,7 @@ public class MoveServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         logger.info("Incoming request to {}: {}", request.getRequestURL(), request.getQueryString());
         var user = sessionManager.validateUser(request);
 
@@ -38,6 +38,6 @@ public class MoveServlet extends HttpServlet {
         user.setCurrentLocationId(nextLocationId);
 
         logger.info("User move to location: name={}, id={}", gameMap.fetchLocationById(nextLocationId).getName(), nextLocationId);
-        response.sendRedirect("/room");
+        response.sendRedirect(request.getContextPath() + "/room");
     }
 }

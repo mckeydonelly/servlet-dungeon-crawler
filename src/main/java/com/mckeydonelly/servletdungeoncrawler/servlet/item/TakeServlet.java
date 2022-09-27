@@ -22,7 +22,7 @@ public class TakeServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         logger.info("Incoming request to {}: {}", request.getRequestURL(), request.getQueryString());
         var user = sessionManager.validateUser(request);
 

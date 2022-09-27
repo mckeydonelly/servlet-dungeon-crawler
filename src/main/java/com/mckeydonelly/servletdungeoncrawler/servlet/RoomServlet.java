@@ -67,8 +67,8 @@ public class RoomServlet extends HttpServlet {
                 objectsOnLoc,
                 npcs,
                 locationName);
-        getServletContext()
-                .getRequestDispatcher("/WEB-INF/jsp/game.jsp")
+        request.getServletContext()
+                .getRequestDispatcher(request.getContextPath() + "/WEB-INF/jsp/game.jsp")
                 .forward(request, response);
     }
 

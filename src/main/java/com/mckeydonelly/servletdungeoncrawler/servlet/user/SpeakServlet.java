@@ -42,7 +42,14 @@ public class SpeakServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         logger.info("Incoming request to {}: {}", request.getRequestURL(), request.getQueryString());
 
-        String npcId = request.getParameter("npcId");
+        Object npcIdTmp = request.getParameter("npcId");
+        String npcId = null;
+        if(Objects.isNull(npcIdTmp)) {
+            logger.error("npcId is empty");
+            throw new IllegalArgumentException("npcId is empty");
+        } else {
+            npcId = (String) npcIdTmp;
+        }
         Npc npc = npcRepository.findById(npcId);
         Dialog npcDialog = dialogRepository.findById(npc.getDialogId());
 
@@ -74,7 +81,7 @@ public class SpeakServlet extends HttpServlet {
         request.setAttribute("dialogInfo", dialogInfo);
 
         logger.info("Response: npcName={}, dialogInfo={}", npc.getName(), dialogInfo);
-        getServletContext().getRequestDispatcher("/WEB-INF/jsp/dialog.jsp")
+        request.getServletContext().getRequestDispatcher(request.getContextPath() + "/WEB-INF/jsp/dialog.jsp")
                 .forward(request, response);
     }
 

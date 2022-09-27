@@ -25,6 +25,6 @@ public class StartServlet extends HttpServlet {
         userManager.createUser(request);
 
         logger.info("Redirect to start location");
-        response.sendRedirect("room");
+        response.sendRedirect(request.getContextPath() + "/room");
     }
 }

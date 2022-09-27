@@ -33,8 +33,8 @@ public class IndexServlet extends HttpServlet {
         session.setAttribute("questProlog", gameMap.getPrologue());
 
         logger.info("Redirect to index page with parameters: userName={}, questProlog={}", session.getAttribute("userName"), gameMap.getPrologue());
-        getServletContext()
-                .getRequestDispatcher("/WEB-INF/jsp/index.jsp")
+        request.getServletContext()
+                .getRequestDispatcher(request.getContextPath() + "/WEB-INF/jsp/index.jsp")
                 .forward(request, response);
     }
 }

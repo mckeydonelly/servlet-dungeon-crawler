@@ -5,7 +5,6 @@ import com.mckeydonelly.servletdungeoncrawler.engine.dto.ItemInfo;
 import com.mckeydonelly.servletdungeoncrawler.engine.objects.item.DamageType;
 import com.mckeydonelly.servletdungeoncrawler.engine.objects.item.DefenseType;
 import com.mckeydonelly.servletdungeoncrawler.engine.objects.item.Item;
-import com.mckeydonelly.servletdungeoncrawler.repositories.ItemRepository;
 import com.mckeydonelly.servletdungeoncrawler.repositories.Repository;
 import com.mckeydonelly.servletdungeoncrawler.session.SessionManager;
 import com.mckeydonelly.servletdungeoncrawler.user.User;
@@ -32,7 +31,7 @@ public class InventoryServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         logger.info("Incoming request to {}: {}", request.getRequestURL(), request.getQueryString());
         var user = sessionManager.validateUser(request);
 
