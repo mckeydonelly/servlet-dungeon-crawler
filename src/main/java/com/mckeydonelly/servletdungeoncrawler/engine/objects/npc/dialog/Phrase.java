@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 @Setter
 @Getter
-class Phrase {
+public class Phrase {
     private static final Logger logger = LoggerFactory.getLogger(Phrase.class);
 
     private int id;

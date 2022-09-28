@@ -1,7 +1,6 @@
 package com.mckeydonelly.servletdungeoncrawler.servlet.user.inventory;
 
 import com.mckeydonelly.servletdungeoncrawler.engine.objects.item.Item;
-import com.mckeydonelly.servletdungeoncrawler.engine.objects.item.ItemType;
 import com.mckeydonelly.servletdungeoncrawler.repositories.Repository;
 import com.mckeydonelly.servletdungeoncrawler.session.SessionManager;
 import com.mckeydonelly.servletdungeoncrawler.user.User;

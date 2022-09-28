@@ -1,7 +1,6 @@
 package com.mckeydonelly.servletdungeoncrawler.servlet;
 
 import com.mckeydonelly.servletdungeoncrawler.user.UserManager;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -19,7 +18,7 @@ public class StartServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         logger.info("Incoming request to {}: {}", request.getRequestURL(), request.getQueryString());
         logger.info("Creating user...");
         userManager.createUser(request);

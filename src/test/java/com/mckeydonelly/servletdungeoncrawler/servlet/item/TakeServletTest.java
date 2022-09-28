@@ -2,7 +2,6 @@ package com.mckeydonelly.servletdungeoncrawler.servlet.item;
 
 import com.mckeydonelly.servletdungeoncrawler.session.SessionManager;
 import com.mckeydonelly.servletdungeoncrawler.user.User;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.junit.jupiter.api.Test;

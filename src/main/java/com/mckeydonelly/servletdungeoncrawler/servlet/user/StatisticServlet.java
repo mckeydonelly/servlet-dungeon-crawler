@@ -41,7 +41,7 @@ public class StatisticServlet extends HttpServlet {
 
         var userOptional = sessionManager.getUser(request);
 
-        if(userOptional.isEmpty()) {
+        if (userOptional.isEmpty()) {
             result.put("User", "No user data");
             return result;
         }
@@ -55,13 +55,9 @@ public class StatisticServlet extends HttpServlet {
     }
 
     private String getUserIp(HttpServletRequest request) {
-        String remoteAddr = "";
-
-        if (request != null) {
-            remoteAddr = request.getHeader("X-FORWARDED-FOR");
-            if (remoteAddr == null || "".equals(remoteAddr)) {
-                remoteAddr = request.getRemoteAddr();
-            }
+        String remoteAddr = request.getHeader("X-FORWARDED-FOR");
+        if (remoteAddr == null) {
+            remoteAddr = request.getRemoteAddr();
         }
         return remoteAddr;
     }
