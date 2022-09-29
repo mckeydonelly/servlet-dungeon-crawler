@@ -12,7 +12,6 @@ import java.util.Map;
 @Setter
 public class GameMap implements Serializable {
     private static final Logger logger = LoggerFactory.getLogger(GameMap.class);
-
     @Getter
     private String prologue;
     @Getter
@@ -20,12 +19,23 @@ public class GameMap implements Serializable {
     private Map<Integer, Location> locationsOnMap;
 
     public Location fetchLocationById(Integer id) {
-        try {
-            return locationsOnMap.get(id);
-        } catch (NullPointerException e) {
-            logger.error("Didn't found location with id: {}", id);
-            throw new IllegalArgumentException(e);
+        return locationsOnMap.get(id);
+    }
+
+    public boolean validateLocationId(Integer currentLocationId, Integer nextLocationId) {
+        boolean result = false;
+        if (nextLocationId > 0 && nextLocationId <= locationsOnMap.size()) {
+            return result;
         }
+
+
+        result = fetchLocationById(currentLocationId)
+                .getPaths()
+                .values()
+                .stream()
+                .anyMatch(path -> path.getLinkedLocationId() == nextLocationId);
+        logger.info("Validating location id {}: {}", nextLocationId, result);
+        return result;
     }
 }
 

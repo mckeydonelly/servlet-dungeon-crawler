@@ -3,7 +3,6 @@ package com.mckeydonelly.servletdungeoncrawler.engine.objects.npc.dialog;
 import com.mckeydonelly.servletdungeoncrawler.engine.objects.item.Item;
 import com.mckeydonelly.servletdungeoncrawler.engine.quest.Quest;
 import com.mckeydonelly.servletdungeoncrawler.engine.quest.QuestType;
-import com.mckeydonelly.servletdungeoncrawler.repositories.ItemRepository;
 import com.mckeydonelly.servletdungeoncrawler.repositories.Repository;
 import com.mckeydonelly.servletdungeoncrawler.user.QuestStatus;
 import com.mckeydonelly.servletdungeoncrawler.user.User;
@@ -22,7 +21,7 @@ public class AnswerActionManager {
     }
 
     public int answerAction(User user, Answer answer) {
-        logger.info("Make answer action");
+        logger.info("Make answer action for user with id {} for answer \"{}\"", user.getId(), answer.getLabel());
         AnswerAction answerAction = answer.getAnswerAction();
         boolean isSuccess = switch (answerAction.getAnswerActionType()) {
             case TAKE_ITEM -> takeItem(user, answerAction.getItemId());
