@@ -1,0 +1,164 @@
+{
+  "items": {
+    "sword": {
+      "id": "sword",
+      "name": "Common sword",
+      "imgPath": "img/items/sword.png",
+      "type": "EQUIPMENT",
+      "weight": "3",
+      "damageTypeList": {
+        "NORMAL": 3,
+        "MAGIC": 0
+      },
+      "defenseTypeList": {
+        "NORMAL": 0,
+        "MAGIC": 0
+      },
+      "healAmount": 0
+    },
+    "bow": {
+      "id": "bow",
+      "name": "Common bow",
+      "imgPath": "img/items/bow.png",
+      "type": "EQUIPMENT",
+      "weight": "2",
+      "damageTypeList": {
+        "NORMAL": 2,
+        "MAGIC": 0
+      },
+      "defenseTypeList": {
+        "NORMAL": 0,
+        "MAGIC": 0
+      },
+      "healAmount": 0
+    },
+    "dagger": {
+      "id": "dagger",
+      "name": "Common dagger",
+      "imgPath": "img/items/dagger.png",
+      "type": "EQUIPMENT",
+      "weight": "1",
+      "damageTypeList": {
+        "NORMAL": 1,
+        "MAGIC": 0
+      },
+      "defenseTypeList": {
+        "NORMAL": 0,
+        "MAGIC": 0
+      },
+      "healAmount": 0
+    },
+    "cap": {
+      "id": "cap",
+      "name": "Common cap",
+      "imgPath": "img/items/cap.png",
+      "type": "EQUIPMENT",
+      "weight": "1",
+      "damageTypeList": {
+        "NORMAL": 0,
+        "MAGIC": 0
+      },
+      "defenseTypeList": {
+        "NORMAL": 1,
+        "MAGIC": 0
+      },
+      "healAmount": 0
+    },
+    "coat": {
+      "id": "coat",
+      "name": "Common coat",
+      "imgPath": "img/items/coat.png",
+      "type": "EQUIPMENT",
+      "weight": "3",
+      "damageTypeList": {
+        "NORMAL": 0,
+        "MAGIC": 0
+      },
+      "defenseTypeList": {
+        "NORMAL": 3,
+        "MAGIC": 0
+      },
+      "healAmount": 0
+    },
+    "gloves": {
+      "id": "gloves",
+      "name": "Common gloves",
+      "imgPath": "img/items/gloves.png",
+      "type": "EQUIPMENT",
+      "weight": "1",
+      "damageTypeList": {
+        "NORMAL": 0,
+        "MAGIC": 0
+      },
+      "defenseTypeList": {
+        "NORMAL": 1,
+        "MAGIC": 0
+      },
+      "healAmount": 0
+    },
+    "pants": {
+      "id": "pants",
+      "name": "Common pants",
+      "imgPath": "img/items/pants.png",
+      "type": "EQUIPMENT",
+      "weight": "2",
+      "damageTypeList": {
+        "NORMAL": 0,
+        "MAGIC": 0
+      },
+      "defenseTypeList": {
+        "NORMAL": 2,
+        "MAGIC": 0
+      },
+      "healAmount": 0
+    },
+    "boots": {
+      "id": "boots",
+      "name": "Common boots",
+      "imgPath": "img/items/boots.png",
+      "type": "EQUIPMENT",
+      "weight": "1",
+      "damageTypeList": {
+        "NORMAL": 0,
+        "MAGIC": 0
+      },
+      "defenseTypeList": {
+        "NORMAL": 1,
+        "MAGIC": 0
+      },
+      "healAmount": 0
+    },
+    "potionSmall": {
+      "id": "potionSmall",
+      "name": "Small potion",
+      "imgPath": "img/items/potionSmall.png",
+      "type": "POTION",
+      "weight": "1",
+      "damageTypeList": {
+        "NORMAL": 0,
+        "MAGIC": 0
+      },
+      "defenseTypeList": {
+        "NORMAL": 0,
+        "MAGIC": 0
+      },
+      "healAmount": 25
+    },
+    "crateKey": {
+      "id": "crateKey",
+      "name": "Crate Key [QUEST]",
+      "imgPath": "img/items/crateKey.png",
+      "type": "QUEST",
+      "weight": "1",
+      "damageTypeList": {
+        "NORMAL": 0,
+        "MAGIC": 0
+      },
+      "defenseTypeList": {
+        "NORMAL": 0,
+        "MAGIC": 0
+      },
+      "healAmount": 0
+    }
+  }
+}

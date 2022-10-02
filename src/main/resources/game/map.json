@@ -1,0 +1,411 @@
+{
+  "prologue": "Hello traveler. You didn't suspect anything about the future, but it found you by itself.",
+  "mapImgPath": "img/DefaultMap.png",
+  "locationsOnMap": {
+    "1": {
+      "id": 1,
+      "name": "Start location",
+      "paths": {
+        "1": {
+          "id": 1,
+          "linkedLocationId": 2,
+          "open": true,
+          "openItemId": null
+        }
+      },
+      "crateOnLocationList": {
+        "2": "crateSmall"
+      },
+      "npcOnLocationList": {},
+      "itemOnLocationList": {
+        "3": "sword"
+      }
+    },
+    "2": {
+      "id": 2,
+      "name": "Strange man",
+      "paths": {
+        "4": {
+          "id": 1,
+          "linkedLocationId": 3,
+          "open": true,
+          "openItemId": null
+        },
+        "5": {
+          "id": 2,
+          "linkedLocationId": 1,
+          "open": true,
+          "openItemId": null
+        }
+      },
+      "crateOnLocationList": {},
+      "npcOnLocationList": {
+        "6": "strangeMan"
+      },
+      "itemOnLocationList": {}
+    },
+    "3": {
+      "id": 3,
+      "name": "North mines",
+      "paths": {
+        "7": {
+          "id": 1,
+          "linkedLocationId": 2,
+          "open": true,
+          "openItemId": null
+        },
+        "8": {
+          "id": 2,
+          "linkedLocationId": 4,
+          "open": true,
+          "openItemId": null
+        },
+        "9": {
+          "id": 3,
+          "linkedLocationId": 8,
+          "open": true,
+          "openItemId": null
+        }
+      },
+      "crateOnLocationList": {
+        "10": "crateSmall"
+      },
+      "npcOnLocationList": {},
+      "itemOnLocationList": {}
+    },
+    "4": {
+      "id": 4,
+      "name": "East garden",
+      "paths": {
+        "12": {
+          "id": 1,
+          "linkedLocationId": 3,
+          "open": true,
+          "openItemId": null
+        },
+        "11": {
+          "id": 2,
+          "linkedLocationId": 7,
+          "open": true,
+          "openItemId": null
+        }
+      },
+      "crateOnLocationList": {
+        "13": "crateMiddle"
+      },
+      "npcOnLocationList": {
+        "14": "warriorSmall"
+      },
+      "itemOnLocationList": {}
+    },
+    "5": {
+      "id": 5,
+      "name": "North Garden",
+      "paths": {
+        "15": {
+          "id": 1,
+          "linkedLocationId": 6,
+          "open": true,
+          "openItemId": null
+        },
+        "16": {
+          "id": 2,
+          "linkedLocationId": 11,
+          "open": true,
+          "openItemId": null
+        }
+      },
+      "crateOnLocationList": {
+        "17": "crateSmall"
+      },
+      "npcOnLocationList": {
+        "18": "warriorSmall"
+      },
+      "itemOnLocationList": {}
+    },
+    "6": {
+      "id": 6,
+      "name": "Old barracks",
+      "paths": {
+        "19": {
+          "id": 1,
+          "linkedLocationId": 5,
+          "open": true,
+          "openItemId": null
+        },
+        "20": {
+          "id": 2,
+          "linkedLocationId": 9,
+          "open": true,
+          "openItemId": null
+        }
+      },
+      "crateOnLocationList": {
+        "21": "crateSmall",
+        "22": "crateMiddle"
+      },
+      "npcOnLocationList": {
+        "23": "warriorSmall",
+        "24": "warriorSmall",
+        "25": "warriorSmall"
+      },
+      "itemOnLocationList": {}
+    },
+    "7": {
+      "id": 7,
+      "name": "East dungeon",
+      "paths": {
+        "26": {
+          "id": 1,
+          "linkedLocationId": 4,
+          "open": true,
+          "openItemId": null
+        },
+        "27": {
+          "id": 2,
+          "linkedLocationId": 10,
+          "open": true,
+          "openItemId": null
+        },
+        "71": {
+          "id": 3,
+          "linkedLocationId": 8,
+          "open": true,
+          "openItemId": null
+        }
+      },
+      "crateOnLocationList": {
+        "28": "crateMiddle"
+      },
+      "npcOnLocationList": {
+        "29": "warriorMiddle"
+      },
+      "itemOnLocationList": {}
+    },
+    "8": {
+      "id": 8,
+      "name": "Central mines",
+      "paths": {
+        "30": {
+          "id": 1,
+          "linkedLocationId": 3,
+          "open": true,
+          "openItemId": null
+        },
+        "31": {
+          "id": 2,
+          "linkedLocationId": 9,
+          "open": true,
+          "openItemId": null
+        },
+        "32": {
+          "id": 3,
+          "linkedLocationId": 10,
+          "open": true,
+          "openItemId": null
+        },
+        "72": {
+          "id": 4,
+          "linkedLocationId": 7,
+          "open": true,
+          "openItemId": null
+        }
+      },
+      "crateOnLocationList": {
+        "33": "crateMiddle",
+        "34": "crateMiddle"
+      },
+      "npcOnLocationList": {
+        "35": "warriorMiddle"
+      },
+      "itemOnLocationList": {}
+    },
+    "9": {
+      "id": 9,
+      "name": "Central garden",
+      "paths": {
+        "36": {
+          "id": 1,
+          "linkedLocationId": 6,
+          "open": true,
+          "openItemId": null
+        },
+        "37": {
+          "id": 2,
+          "linkedLocationId": 8,
+          "open": true,
+          "openItemId": null
+        },
+        "38": {
+          "id": 3,
+          "linkedLocationId": 11,
+          "open": true,
+          "openItemId": null
+        },
+        "39": {
+          "id": 4,
+          "linkedLocationId": 12,
+          "open": true,
+          "openItemId": null
+        }
+      },
+      "crateOnLocationList": {
+        "40": "crateSmall"
+      },
+      "npcOnLocationList": {},
+      "itemOnLocationList": {
+        "41": "potionSmall"
+      }
+    },
+    "10": {
+      "id": 10,
+      "name": "East planes",
+      "paths": {
+        "42": {
+          "id": 1,
+          "linkedLocationId": 7,
+          "open": true,
+          "openItemId": null
+        },
+        "43": {
+          "id": 2,
+          "linkedLocationId": 8,
+          "open": true,
+          "openItemId": null
+        },
+        "44": {
+          "id": 3,
+          "linkedLocationId": 14,
+          "open": true,
+          "openItemId": null
+        }
+      },
+      "crateOnLocationList": {
+        "45": "crateMiddle"
+      },
+      "npcOnLocationList": {
+        "46": "warriorBig"
+      },
+      "itemOnLocationList": {
+        "47": "crateKey"
+      }
+    },
+    "11": {
+      "id": 11,
+      "name": "West planes",
+      "paths": {
+        "48": {
+          "id": 1,
+          "linkedLocationId": 5,
+          "open": true,
+          "openItemId": null
+        },
+        "49": {
+          "id": 2,
+          "linkedLocationId": 9,
+          "open": true,
+          "openItemId": null
+        },
+        "50": {
+          "id": 3,
+          "linkedLocationId": 13,
+          "open": false,
+          "openItemId": "crateKey"
+        }
+      },
+      "crateOnLocationList": {
+        "51": "crateSmall"
+      },
+      "npcOnLocationList": {
+        "52": "warriorSmall",
+        "53": "warriorMiddle"
+      },
+      "itemOnLocationList": {}
+    },
+    "12": {
+      "id": 12,
+      "name": "South garden",
+      "paths": {
+        "55": {
+          "id": 1,
+          "linkedLocationId": 9,
+          "open": true,
+          "openItemId": null
+        },
+        "54": {
+          "id": 2,
+          "linkedLocationId": 13,
+          "open": false,
+          "openItemId": "crateKey"
+        },
+        "57": {
+          "id": 3,
+          "linkedLocationId": 14,
+          "open": true,
+          "openItemId": null
+        }
+      },
+      "crateOnLocationList": {
+        "58": "crateSmall"
+      },
+      "npcOnLocationList": {
+        "59": "warriorMiddle",
+        "60": "warriorBig"
+      },
+      "itemOnLocationList": {
+        "61": "potionSmall"
+      }
+    },
+    "13": {
+      "id": 13,
+      "name": "Wild mountains",
+      "paths": {
+        "62": {
+          "id": 1,
+          "linkedLocationId": 11,
+          "open": true,
+          "openItemId": null
+        },
+        "63": {
+          "id": 2,
+          "linkedLocationId": 12,
+          "open": true,
+          "openItemId": null
+        }
+      },
+      "crateOnLocationList": {
+        "64": "crateQuest"
+      },
+      "npcOnLocationList": {
+        "65": "warriorNamedLans"
+      },
+      "itemOnLocationList": {}
+    },
+    "14": {
+      "id": 14,
+      "name": "Forgotten planes",
+      "paths": {
+        "66": {
+          "id": 1,
+          "linkedLocationId": 10,
+          "open": true,
+          "openItemId": null
+        },
+        "67": {
+          "id": 2,
+          "linkedLocationId": 12,
+          "open": true,
+          "openItemId": null
+        }
+      },
+      "crateOnLocationList": {
+        "68": "crateBig"
+      },
+      "npcOnLocationList": {
+        "69": "warriorMiddle",
+        "70": "warriorMiddle"
+      },
+      "itemOnLocationList": {}
+    }
+  }
+}
