@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-@AllArgsConstructor
 @Data
 public class QuestRepositoryInMemory implements QuestRepository {
     private final Map<String, Quest> quests = new ConcurrentHashMap<>();
